@@ -1,0 +1,6 @@
+@Wiggler_HostAddress = http://localhost:5101
+
+GET {{Wiggler_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
