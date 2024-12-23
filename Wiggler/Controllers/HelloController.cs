@@ -14,8 +14,12 @@ public class HelloController : ControllerBase
     }
 
     [HttpGet(Name = "GetHello")]
-    public string GetHello()
+    public string GetHello(string? name)
     {
+        if (name != null)
+        {
+            return $"Hello, {name}!";
+        }
         return "Hello, World!";
     }
 
@@ -23,5 +27,17 @@ public class HelloController : ControllerBase
     public string GetGoodbye()
     {
         return "Goodbye, World!";
+    }
+
+    [HttpPost(Name = "PostHello")]
+    public string PostHello([FromBody] Hello name)
+    {
+        return $"Hello, {name.Name}!";
+    }
+
+    [HttpPost("Bye", Name = "PostGoodbye")]
+    public string PostGoodbye([FromBody] string name)
+    {
+        return $"Goodbye, {name}!";
     }
 }
